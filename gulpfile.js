@@ -51,9 +51,9 @@ gulp.task('styles', () => {
 			pkg: pkg
 		}))
 		.pipe($.sourcemaps.write('.'))
-		.pipe(gulp.dest('./'))
+		.pipe(gulp.dest('./build/css/'))
 		.pipe($.rename(file => file.basename = file.basename.replace('.min', '')))
-		.pipe(gulp.dest('./'))
+		.pipe(gulp.dest('./build/css/'))
 		.pipe(browserSync.stream());
 });
 
