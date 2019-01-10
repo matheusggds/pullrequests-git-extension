@@ -14,7 +14,6 @@ const paths = {
 	js: 'src/scripts/**/*.js',
 	scss: 'src/styles/**/*.scss',
 	css: 'src/css/*.css',
-	php: './*.php',
 	webpack: 'src/scripts/*.js'
 };
 
@@ -101,17 +100,10 @@ gulp.task('scripts', () => {
 
 // Connect and start a local php server using gulp-connect-php
 gulp.task('connect-sync', () => {
-	connect.server({}, () => {
-		browserSync({
-			proxy: '127.0.0.1:8000'
-		});
-	});
-
-	gulp.watch(paths.php).on('change', () => {
-		browserSync.reload();
-	});
+    browserSync.init({
+        server: { baseDir: './build/' }
+    })
 });
-
 // Default task
 gulp.task('default', ['styles', 'scripts', 'connect-sync', 'watch']);
 
