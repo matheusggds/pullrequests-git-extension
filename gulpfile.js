@@ -33,7 +33,7 @@ gulp.task('styles', () => {
 		.pipe($.sass({
 			errLogToConsole: true,
 			outputStyle: 'compressed',
-			includePaths: ['src/styles']
+			includePaths: ['src/styles', '/node_modules']
 		}).on('error', $.sass.logError))
 		.pipe($.postcss([
 			cssMqpacker({
