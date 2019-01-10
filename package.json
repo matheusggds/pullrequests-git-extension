@@ -1,0 +1,27 @@
+{
+  "name": "pullrequests-git-extension",
+  "version": "1.0.0",
+  "description": "Extension to easily view Jussi Plataformas Pull Requestes Labels",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheusggds/pullrequests-git-extension.git"
+  },
+  "keywords": [
+    "chorme",
+    "extension",
+    "js",
+    "pull",
+    "requests",
+    "labels"
+  ],
+  "author": "Matheus Gomide",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/matheusggds/pullrequests-git-extension/issues"
+  },
+  "homepage": "https://github.com/matheusggds/pullrequests-git-extension#readme"
+}
