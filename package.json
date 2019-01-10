@@ -1,27 +1,49 @@
 {
-  "name": "pullrequests-git-extension",
-  "version": "1.0.0",
-  "description": "Extension to easily view Jussi Plataformas Pull Requestes Labels",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/matheusggds/pullrequests-git-extension.git"
-  },
-  "keywords": [
-    "chorme",
-    "extension",
-    "js",
-    "pull",
-    "requests",
-    "labels"
-  ],
-  "author": "Matheus Gomide",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/matheusggds/pullrequests-git-extension/issues"
-  },
-  "homepage": "https://github.com/matheusggds/pullrequests-git-extension#readme"
+	"name": "pullrequests-git-extension",
+	"version": "1.0.0",
+	"description": "Extension to easily view Jussi Plataformas Pull Requestes Labels",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/matheusggds/pullrequests-git-extension.git"
+	},
+	"keywords": [
+		"chorme",
+		"extension",
+		"js",
+		"pull",
+		"requests",
+		"labels"
+	],
+	"dependencies": {
+	"autoprefixer": "^7.2.2",
+	"babel-core": "^6.26.0",
+	"babel-loader": "^7.1.2",
+	"babel-preset-env": "^1.6.1",
+	"browser-sync": "^2.23.5",
+	"css-mqpacker": "^6.0.1",
+	"cssnano": "^3.10.0",
+	"global": "^4.3.2",
+	"gulp": "^3.9.1",
+	"gulp-banner": "^0.1.3",
+	"gulp-connect-php": "^1.0.1",
+	"gulp-load-plugins": "^1.5.0",
+	"gulp-plumber": "^1.1.0",
+	"gulp-postcss": "^7.0.0",
+	"gulp-rename": "^1.2.2",
+	"gulp-sass": "^3.1.0",
+	"gulp-sourcemaps": "^2.6.1",
+	"gulp-webserver": "^0.9.1",
+	"vinyl-named": "^1.1.0",
+	"webpack-stream": "^4.0.0"
+	},
+	"author": "Matheus Gomide",
+	"license": "GPL-3.0",
+	"bugs": {
+		"url": "https://github.com/matheusggds/pullrequests-git-extension/issues"
+	},
+	"homepage": "https://github.com/matheusggds/pullrequests-git-extension#readme"
 }
