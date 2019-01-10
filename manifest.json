@@ -1,10 +1,9 @@
 {
     "manifest_version": 2,
     "name": "Jussi PR Manager",
-    "version": 1,
+    "version": "0.1",
     "description": "Extension to easily view Jussi Plataformas Pull Requests Labels",
     "author": "Matheus Gomide",
-    "default_locale": "pt-br",
     "icons": {
         "16":   "icons/icon-16.png",
         "48":   "icons/icon-48.png",
