@@ -1,5 +1,5 @@
 {
-    "manifest_version": 1,
+    "manifest_version": 2,
     "name": "Jussi PR Manager",
     "version": 1,
     "description": "Extension to easily view Jussi Plataformas Pull Requests Labels",
