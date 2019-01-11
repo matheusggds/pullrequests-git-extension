@@ -3,6 +3,12 @@
 		'purecss/build/forms',
 		'purecss/build/tables';
 
+.header {
+	&__title {
+		margin: 0;
+	}
+}
+
 .wrapper {
 	min-width: 500px;
 	padding: 15px;
