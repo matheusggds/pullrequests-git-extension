@@ -18,7 +18,7 @@ export default class GitHub extends Component {
 								<label for="login_password">Senha</label>
 								<input type="password" className="form-control" name="login_password" id="login_password" aria-describedby="GitHub Password"/>
 							</div>
-							<button type="submit" className="btn btn-primary">Autenticar</button>
+							<button type="submit" className="btn btn-primary float-right">Autenticar</button>
 						</form>
 					</div>
 				</div>
