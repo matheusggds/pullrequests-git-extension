@@ -12,6 +12,6 @@
 	"browser_action": {
 		"default_icon": "icons/icon-48.png",
 		"default_title": "Jussi PRs Manager",
-		"default_popup": "/build/popup.html"
+		"default_popup": "/build/index.html"
 	}
 }
