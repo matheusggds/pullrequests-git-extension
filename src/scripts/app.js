@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import GitHub from './components/GitHub';
+import App from './components/app';
 
 ReactDOM.render(
-	<GitHub/>,
+	<App/>,
 	document.getElementById('app')
 )
