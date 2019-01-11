@@ -1,5 +1,9 @@
-@import 'purecss/build/base';
+@import 'purecss/build/base',
+		'purecss/build/buttons',
+		'purecss/build/forms',
+		'purecss/build/tables';
 
 .wrapper {
 	min-width: 500px;
+	padding: 15px;
 }
