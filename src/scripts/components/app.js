@@ -3,15 +3,21 @@ import GitHubLogin from './GitHubLogin';
 
 export default class App extends Component {
 
-	loginAuthenticate(e) {
-		e.preventDefault();
+	constructor(props) {
+		super(props);
 
-		console.log(this.refs.username);
+		this.handler = this.handler.bind(this);
+	}
+
+	handler(key, value) {
+		this.setState({
+			key: value
+		})
 	}
 
 	render() {
 		return (
-			<GitHubLogin/>
+			<GitHubLogin handler={this.handler}/>
 		)
 	}
 }
