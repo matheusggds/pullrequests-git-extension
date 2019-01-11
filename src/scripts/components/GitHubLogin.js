@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import GitHub from 'github-api';
 
 export default class GitHubLogin extends Component {
 	constructor(props) {
@@ -11,7 +12,16 @@ export default class GitHubLogin extends Component {
 	loginAuthenticate(e) {
 		e.preventDefault();
 
-		console.log(this.state);
+		let GitUser = new GitHub({
+			username: this.state.login_username,
+			password: this.state.login_password
+		});
+
+		console.log(GitUser.getUser());
+
+		if (GitUser) {
+			this.props.handler('GitUser', GitUser);
+		}
 	}
 
 	handleInput(e) {
