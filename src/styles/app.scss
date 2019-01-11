@@ -13,10 +13,18 @@ $font-family-base: 'Open Sans', sans-serif;
 @import "bootstrap/scss/_forms";
 @import "bootstrap/scss/_buttons";
 @import "bootstrap/scss/_grid";
+@import "bootstrap/scss/utilities/_flex";
 
 .wrapper {
 	padding: 1em;
-	width: 500px;
+	min-width: 500px;
+}
+
+.login {
+	&__title {
+		font-size: 1.5em;
+		text-align: center;
+	}
 }
 
 .header {
