@@ -97,7 +97,7 @@ gulp.task('scripts', () => {
 				})
 			]
 		}))
-		.pipe(gulp.dest('build/'))
+		.pipe(gulp.dest('build/scripts/'))
 		.pipe(browserSync.stream());
 });
 
