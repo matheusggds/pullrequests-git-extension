@@ -6,10 +6,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/matheusggds/pullrequests-git-extension.git"
-	},
+	"repository": "git+https://github.com/matheusggds/pullrequests-git-extension.git",
 	"keywords": [
 		"chorme",
 		"extension",
@@ -18,9 +15,6 @@
 		"requests",
 		"labels"
 	],
-	"dependencies": {
-		"bulma-scss": "^0.6.0"
-	},
 	"author": "Matheus Gomide",
 	"license": "GPL-3.0",
 	"bugs": {
