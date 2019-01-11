@@ -1,13 +1,28 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
 @import 'purecss/build/base',
 		'purecss/build/buttons',
 		'purecss/build/forms',
 		'purecss/build/tables';
 
+// COLORS
+$gray:			#969696;
+$gray-light:	#c4c4c4;;
+$gray-darker:	#646464;
+
+html {
+	font-family: 'Open Sans', sans-serif;
+}
+
 .header {
 	&__title {
+		font-size: 1.5em;
 		margin: 0;
+		color: $gray;
+	}
+
+	&__separator {
+		background: red;
 	}
 }
 
