@@ -9,7 +9,9 @@ export default class GitHubLogin extends Component {
 	}
 
 	loginAuthenticate(e) {
-		this.props.handler('username', e.target.value);
+		e.preventDefault();
+
+		console.log(this.state);
 	}
 
 	handleInput(e) {

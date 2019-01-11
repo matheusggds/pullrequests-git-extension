@@ -47,6 +47,7 @@
 	},
 	"dependencies": {
 		"bootstrap": "^4.2.1",
+		"github-api": "^3.0.0",
 		"react": "^16.7.0",
 		"react-dom": "^16.7.0"
 	}
