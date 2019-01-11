@@ -73,7 +73,7 @@ gulp.task('scripts', () => {
 				loaders: [
 					{
 						test: /\.js$/,
-						use: 'babel-loader',
+						loader: 'babel-loader',
 						exclude: /node_modules/,
 						query: {
 							presets: ['es2015', 'react']
