@@ -1,32 +1,88 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
-@import 'purecss/build/base',
-		'purecss/build/buttons',
-		'purecss/build/forms',
-		'purecss/build/tables';
+// Required
+@import "bootstrap/scss/_functions";
+@import "bootstrap/scss/_variables";
 
-// COLORS
-$gray:			#969696;
-$gray-light:	#c4c4c4;;
-$gray-darker:	#646464;
+/* Custom variables */
+$font-family-base: 'Open Sans', sans-serif;
 
-html {
-	font-family: 'Open Sans', sans-serif;
+@import "bootstrap/scss/_mixins";
+@import "bootstrap/scss/_reboot";
+@import "bootstrap/scss/_type";
+@import "bootstrap/scss/_forms";
+@import "bootstrap/scss/_buttons";
+@import "bootstrap/scss/_grid";
+
+.wrapper {
+	padding: 1em;
+	width: 500px;
 }
 
 .header {
-	&__title {
-		font-size: 1.5em;
-		margin: 0;
-		color: $gray;
-	}
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 
-	&__separator {
-		background: red;
+	&__title {
+		margin: 0;
 	}
 }
 
-.wrapper {
-	min-width: 500px;
-	padding: 15px;
+.last-updated {
+	color: $gray-600;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+
+	&__text {
+		font-size: .7em;
+	}
+
+	&__time {
+		font-size: .8em;
+	}
+}
+
+.label-description {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	list-style: none;
+	padding: 0;
+
+	&__item {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+	}
+
+	&__color {
+		border-radius: 2px;
+		display: inline-block;
+		height: 10px;
+		margin-right: .5em;
+		width: 10px;
+
+		&--reviewaquired {
+			background-color: #d93f0b;
+		}
+
+		&--waitingmerge {
+			background-color: #7057ff;
+		}
+
+		&--waitingadjust {
+			background-color: #fbca04;
+		}
+
+		&--approved {
+			background-color: #0e8a16;
+		}
+	}
+
+	&__desc {
+		font-size: .8em;
+	}
 }
