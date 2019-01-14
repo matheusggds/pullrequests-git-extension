@@ -17,8 +17,8 @@ body {
 
 		img {
 			border-radius: 100%;
-			width: 50px;
 			border: solid 2px $gray-500;
+			width: 50px;
 		}
 	}
 
@@ -28,5 +28,10 @@ body {
 		margin-left: -.5em;
 		padding: .3em 1em;
 		z-index: 5;
+	}
+
+	&__last-update {
+		font-size: .8rem;
+		margin-left: auto;
 	}
 }
