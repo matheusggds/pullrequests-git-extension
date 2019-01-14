@@ -11,7 +11,12 @@ export default class Panel extends Component {
 	}
 
 	componentDidMount() {
-		let repo = this.props.gh.getRepo('jussilabs', this.props.repo);
+		var gh = new GitHub({
+			username: this.props.gh.username,
+			password: this.props.gh.password
+		});
+
+		let repo = gh.getRepo('jussilabs', this.props.repo);
 
 		repo.listPullRequests().then(res => {
 			console.log(res);

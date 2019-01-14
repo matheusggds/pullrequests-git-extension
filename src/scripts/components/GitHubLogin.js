@@ -10,32 +10,32 @@ export default class GitHubLogin extends Component {
 	}
 
 	loginAuthenticate(e) {
-		const self = this;
+		const self = this,
+			loginInfo = {
+				username: this.state.login_username,
+				password: this.state.login_password
+			};
 
 		e.preventDefault();
 
 		/* Authenticate User */
-		var gh = new GitHub({
-			username: this.state.login_username,
-			password: this.state.login_password
-		});
+		var gh = new GitHub(loginInfo);
 
 		gh.getUser().getProfile().then(res => {
-
-			this.props.handler('user',  {
+			let profileInfos =  {
 				'name': res.data.name,
 				'image': res.data.avatar_url
-			});
-			this.props.handler('gh', {
-				username: this.state.login_username,
-				password: this.state.login_password
-			});
+			};
+
+			this.props.handler('user', profileInfos);
+			this.props.handler('gh', loginInfo);
 			this.props.handler('isLogged', true)
 
 			/* Save authentication locally */
 			localStorage.setItem('pr-extension', JSON.stringify({
-				'gh': gh,
-				'user': this.state.user
+				'gh': loginInfo,
+				'user':  profileInfos,
+				'isLogged': true
 			}));
 		});
 	}
