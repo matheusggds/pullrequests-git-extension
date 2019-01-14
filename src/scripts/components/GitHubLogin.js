@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GitHub from 'github-api';
+import axios from 'axios';
 
 export default class GitHubLogin extends Component {
 	constructor(props) {

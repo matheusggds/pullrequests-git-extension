@@ -46,6 +46,7 @@
 		"webpack-stream": "^4.0.0"
 	},
 	"dependencies": {
+		"axios": "^0.18.0",
 		"bootstrap": "^4.2.1",
 		"github-api": "^3.0.0",
 		"react": "^16.7.0",
