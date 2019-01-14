@@ -28,12 +28,12 @@ export default class Dashboard extends Component {
 						<div className="row">
 							<div className="col-6">
 								<div className="dashboard__panel">
-									<Panel/>
+									<Panel name="Brastemp" gh={this.props.gh} repo="brastemp-vtex"/>
 								</div>
 							</div>
 							<div className="col-6">
 								<div className="dashboard__panel">
-									<Panel/>
+									<Panel name="Consul" gh={this.props.gh} repo="consul-vtex"/>
 								</div>
 							</div>
 						</div>

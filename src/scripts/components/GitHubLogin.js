@@ -21,14 +21,11 @@ export default class GitHubLogin extends Component {
 		});
 
 		gh.getUser().getProfile().then(res => {
-			this.setState({
-				'user': {
-					'name': res.data.name,
-					'image': res.data.avatar_url
-				}
-			});
 
-			this.props.handler('user', this.state.user );
+			this.props.handler('user',  {
+				'name': res.data.name,
+				'image': res.data.avatar_url
+			});
 			this.props.handler('gh', gh);
 			this.props.handler('isLogged', true)
 
