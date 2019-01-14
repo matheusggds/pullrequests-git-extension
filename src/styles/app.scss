@@ -7,6 +7,11 @@
 /* Custom variables */
 $font-family-base: 'Open Sans', sans-serif;
 
+$brastemp-color: #f35216;
+$consul-color: #9aca3c;
+$diretonaloja-color: #7f7f7d;
+$compracerta-color: #8600a7;
+
 @import "bootstrap/scss/_mixins";
 @import "bootstrap/scss/_reboot";
 @import "bootstrap/scss/_type";
@@ -97,3 +102,4 @@ $font-family-base: 'Open Sans', sans-serif;
 }
 
 @import './_dashboard';
+@import './_panels';

@@ -19,9 +19,23 @@ export default class Panel extends Component {
 		let repo = gh.getRepo('jussilabs', this.props.repo);
 
 		repo.listPullRequests().then(res => {
-			console.log(res);
+			let filteredData = res.data.map((el) => {
+				return {
+					owner: {
+						avatar: el.user.avatar_url,
+						url: el.user.html_url,
+					},
+					labels: el.labels,
+					link: el.html_url,
+					id: el.number,
+					title: el.title
+				}
+			});
+
+			console.log(filteredData);
 
 			this.setState({
+				pullrequests: filteredData,
 				loaded: true
 			})
 		})
@@ -31,7 +45,35 @@ export default class Panel extends Component {
 		if (!this.state.loaded) {
 			return <span>Loading</span>
 		} else {
-			return <span>Carregou</span>
+			if (this.state.pullrequests.length > 0) {
+				return (
+					<div className={"repo-panel repo-panel--" + this.props.shortname}>
+						<div className="repo-panel__title">
+							{this.props.name}
+						</div>
+						<div className="repo-panel__body">
+							{this.state.pullrequests.map((el, idx) => {
+								return (
+									<div id={el.id} key={el.id} className="repo-panel__item">
+									<span className="repo-panel__thumbavatar">
+										<a href={el.owner.url}>
+											<img src={el.owner.avatar} alt={el.owner.url}/>
+										</a>
+									</span>
+										<span className="repo-panel__pr-title">
+											{el.title}
+										</span>
+										<span className={"repo-panel__label repo-panel__label--" + el.labels[0].name.replace(' ', '-')}>
+										</span>
+									</div>
+								)
+							})}
+						</div>
+					</div>
+				)
+			} else {
+				return null;
+			}
 		}
 	}
 }

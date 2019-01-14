@@ -1,0 +1,40 @@
+.repo-panel {
+	margin-bottom: 1em;
+	border-width: 1px;
+	border-style: solid;
+
+	&--btp { border-color: $brastemp-color}
+	&--cns { border-color: $consul-color}
+	&--dnl { border-color: $diretonaloja-color}
+	&--cc { border-color: $compracerta-color}
+
+	&__title {
+		background: $white;
+		font-size: .8rem;
+		padding: .4rem .4rem;
+	}
+
+	&__body {
+		background: $white;
+	}
+
+	&__item {
+		align-items: center;
+		border-bottom: solid 1px $gray-200;
+		display: flex;
+		flex-direction: row;
+		font-size: .7rem;
+		padding: .35rem .4rem;
+	}
+
+	&__thumbavatar {
+		img {
+			border-radius: 100%;
+			margin-right: .5rem;
+			width: 25px;
+		}
+	}
+}
+
+.panel {
+}
