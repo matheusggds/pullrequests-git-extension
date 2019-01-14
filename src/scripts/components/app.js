@@ -6,6 +6,10 @@ export default class App extends Component {
 	constructor(props) {
 		super(props);
 
+		this.state = {
+			isLogged: false
+		}
+
 		this.handler = this.handler.bind(this);
 	}
 
@@ -17,7 +21,7 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<GitHubLogin handler={this.handler}/>
+			this.state.isLogged ? <Dashboard handler={this.handler}/> : <GitHubLogin handler={this.handler}/>
 		)
 	}
 }
