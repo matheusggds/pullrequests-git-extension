@@ -7,8 +7,12 @@ export default class App extends Component {
 	constructor(props) {
 		super(props);
 
+		let localInfos = JSON.parse(localStorage.getItem('pr-extension'));
+
 		this.state = {
-			isLogged: false
+			isLogged: localInfos && localInfos.gh && localInfos.user && true,
+			gh: localInfos && localInfos.gh,
+			user: localInfos && localInfos.user
 		}
 
 		this.handler = this.handler.bind(this);
@@ -23,7 +27,7 @@ export default class App extends Component {
 	render() {
 		const { isLogged, user, gh } = this.state;
 
-		if(isLogged) return <Dashboard handler={this.handler} user={user} gh={gh}/>
+		if(isLogged && gh && user) return <Dashboard handler={this.handler} user={user} gh={gh}/>
 
 		return <GitHubLogin handler={this.handler}/>
 	}

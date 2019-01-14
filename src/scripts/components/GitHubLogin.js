@@ -31,6 +31,12 @@ export default class GitHubLogin extends Component {
 			this.props.handler('user', this.state.user );
 			this.props.handler('gh', gh);
 			this.props.handler('isLogged', true)
+
+			/* Save authentication locally */
+			localStorage.setItem('pr-extension', JSON.stringify({
+				'gh': gh,
+				'user': this.state.user
+			}));
 		});
 	}
 
