@@ -5,6 +5,8 @@ export default class Panel extends Component {
 	constructor(props) {
 		super(props);
 
+		this.statusArry = ['approved', 'waiting-merge', 'waiting-adjust', 'review-required'];
+
 		this.state = {
 			loaded: false
 		}
@@ -19,7 +21,20 @@ export default class Panel extends Component {
 		let repo = gh.getRepo('jussilabs', this.props.repo);
 
 		repo.listPullRequests().then(res => {
-			let filteredData = res.data.map((el) => {
+
+			res.data.map((el) => {
+				let currentLabel = el.labels[0].name.replace(' ', '-');
+
+				console.log(currentLabel);
+
+				if (this.statusArry.includes(currentLabel)) {
+					this.setState({
+						[currentLabel] : this.state[currentLabel] ? this.state[currentLabel] + 1 : 1
+					});
+				}
+			});
+
+			/* let filteredData = res.data.map((el) => {
 				return {
 					owner: {
 						avatar: el.user.avatar_url,
@@ -31,11 +46,9 @@ export default class Panel extends Component {
 					title: el.title
 				}
 			});
-
-			console.log(filteredData);
+			 */
 
 			this.setState({
-				pullrequests: filteredData,
 				loaded: true
 			})
 		})
@@ -52,10 +65,10 @@ export default class Panel extends Component {
 					</div>
 					<div className="repo-panel__status">
 						<ul className="repo-panel__status-list">
-							<li className="repo-panel__status-item repo-panel__status-item--reviewaquired">0</li>
-							<li className="repo-panel__status-item repo-panel__status-item--waitingadjust">0</li>
-							<li className="repo-panel__status-item repo-panel__status-item--approved">0</li>
-							<li className="repo-panel__status-item repo-panel__status-item--waitingmerge">0</li>
+							<li className="repo-panel__status-item repo-panel__status-item--reviewaquired">{this.state['review-required']}</li>
+							<li className="repo-panel__status-item repo-panel__status-item--waitingadjust">{this.state['waiting-adjust']}</li>
+							<li className="repo-panel__status-item repo-panel__status-item--approved">{this.state['approved']}</li>
+							<li className="repo-panel__status-item repo-panel__status-item--waitingmerge">{this.state['waiting-merge']}</li>
 						</ul>
 					</div>
 				</div>
