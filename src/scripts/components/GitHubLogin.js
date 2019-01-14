@@ -16,8 +16,8 @@ export default class GitHubLogin extends Component {
 
 		/* Authenticate User */
 		var gh = new GitHub({
-			username: 'matheusggds',
-			password: 'nxbxbsx9'
+			username: this.state.login_username,
+			password: this.state.login_password
 		});
 
 		gh.getUser().getProfile().then(res => {
@@ -26,7 +26,10 @@ export default class GitHubLogin extends Component {
 				'name': res.data.name,
 				'image': res.data.avatar_url
 			});
-			this.props.handler('gh', gh);
+			this.props.handler('gh', {
+				username: this.state.login_username,
+				password: this.state.login_password
+			});
 			this.props.handler('isLogged', true)
 
 			/* Save authentication locally */
