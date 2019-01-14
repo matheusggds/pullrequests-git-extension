@@ -1,3 +1,56 @@
+.header {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	&__title {
+		margin: 0;
+	}
+}
+
+.label-description {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	list-style: none;
+	padding: 0;
+
+	&__item {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+	}
+
+	&__color {
+		border-radius: 2px;
+		display: inline-block;
+		height: 10px;
+		margin-right: .5em;
+		width: 10px;
+
+		&--reviewaquired {
+			background-color: #d93f0b;
+		}
+
+		&--waitingmerge {
+			background-color: #7057ff;
+		}
+
+		&--waitingadjust {
+			background-color: #fbca04;
+		}
+
+		&--approved {
+			background-color: #0e8a16;
+		}
+	}
+
+	&__desc {
+		font-size: .8em;
+	}
+}
+
 body {
 	&.dashboard {
 		transition: background-color .8s ease;

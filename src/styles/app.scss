@@ -7,10 +7,17 @@
 /* Custom variables */
 $font-family-base: 'Open Sans', sans-serif;
 
-$brastemp-color: #f35216;
-$consul-color: #9aca3c;
-$diretonaloja-color: #7f7f7d;
-$compracerta-color: #8600a7;
+/* Lojas */
+$brastemp-color: 		#f35216;
+$consul-color: 			#9aca3c;
+$diretonaloja-color: 	#7f7f7d;
+$compracerta-color: 	#8600a7;
+
+/* Labels */
+$review-aquired: 		#d93f0b;
+$waitingmerge:			#7057ff;
+$waitingadjust:			#fbca04;
+$approved:				#0e8a16;
 
 @import "bootstrap/scss/_mixins";
 @import "bootstrap/scss/_reboot";
@@ -24,81 +31,6 @@ $compracerta-color: #8600a7;
 .wrapper {
 	padding: 1em;
 	min-width: 500px;
-}
-
-.login {
-	&__title {
-		font-size: 1.5em;
-		text-align: center;
-	}
-}
-
-.header {
-	align-items: center;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-
-	&__title {
-		margin: 0;
-	}
-}
-
-.last-updated {
-	color: $gray-600;
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-
-	&__text {
-		font-size: .7em;
-	}
-
-	&__time {
-		font-size: .8em;
-	}
-}
-
-.label-description {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	list-style: none;
-	padding: 0;
-
-	&__item {
-		align-items: center;
-		display: flex;
-		flex-direction: row;
-	}
-
-	&__color {
-		border-radius: 2px;
-		display: inline-block;
-		height: 10px;
-		margin-right: .5em;
-		width: 10px;
-
-		&--reviewaquired {
-			background-color: #d93f0b;
-		}
-
-		&--waitingmerge {
-			background-color: #7057ff;
-		}
-
-		&--waitingadjust {
-			background-color: #fbca04;
-		}
-
-		&--approved {
-			background-color: #0e8a16;
-		}
-	}
-
-	&__desc {
-		font-size: .8em;
-	}
 }
 
 @import './_dashboard';
