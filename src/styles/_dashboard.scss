@@ -1,3 +1,10 @@
+body {
+	&.dashboard {
+		transition: background-color .8s ease;
+		background-color: $gray-200;
+	}
+}
+
 .dashboard {
 	&__header {
 		align-items: center;
@@ -6,10 +13,20 @@
 	}
 
 	&__avatar {
+		z-index: 10;
+
 		img {
 			border-radius: 100%;
-			margin-right: .5em;
-			width: 30px;
+			width: 50px;
+			border: solid 2px $gray-500;
 		}
+	}
+
+	&__welcome-msg {
+		background: $white;
+		font-size: .9rem;
+		margin-left: -.5em;
+		padding: .3em 1em;
+		z-index: 5;
 	}
 }

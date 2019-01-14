@@ -4,6 +4,8 @@ import GitHub from 'github-api';
 export default class Dashboard extends Component {
 	constructor(props) {
 		super(props);
+
+		document.body.className += ' ' + 'dashboard';
 	}
 
 	render() {
