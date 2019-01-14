@@ -1,0 +1,15 @@
+.dashboard {
+	&__header {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+	}
+
+	&__avatar {
+		img {
+			border-radius: 100%;
+			margin-right: .5em;
+			width: 30px;
+		}
+	}
+}

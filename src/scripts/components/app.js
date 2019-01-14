@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import GitHubLogin from './GitHubLogin';
+import Dashboard from './Dashboard';
 
 export default class App extends Component {
 
@@ -15,13 +16,15 @@ export default class App extends Component {
 
 	handler(key, value) {
 		this.setState({
-			key: value
+			[key]: value
 		})
 	}
 
 	render() {
-		return (
-			this.state.isLogged ? <Dashboard handler={this.handler}/> : <GitHubLogin handler={this.handler}/>
-		)
+		const { isLogged, user, gh } = this.state;
+
+		if(isLogged) return <Dashboard handler={this.handler} user={user} gh={gh}/>
+
+		return <GitHubLogin handler={this.handler}/>
 	}
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import GitHub from 'github-api';
-import axios from 'axios';
 
 export default class GitHubLogin extends Component {
 	constructor(props) {
@@ -11,18 +10,28 @@ export default class GitHubLogin extends Component {
 	}
 
 	loginAuthenticate(e) {
+		const self = this;
+
 		e.preventDefault();
 
-		let GitUser = new GitHub({
-			username: this.state.login_username,
-			password: this.state.login_password
+		/* Authenticate User */
+		var gh = new GitHub({
+			username: 'matheusggds',
+			password: 'nxbxbsx9'
 		});
 
-		console.log(GitUser.getUser());
+		gh.getUser().getProfile().then(res => {
+			this.setState({
+				'user': {
+					'name': res.data.name,
+					'image': res.data.avatar_url
+				}
+			});
 
-		if (GitUser) {
-			this.props.handler('GitUser', GitUser);
-		}
+			this.props.handler('user', this.state.user );
+			this.props.handler('gh', gh);
+			this.props.handler('isLogged', true)
+		});
 	}
 
 	handleInput(e) {
