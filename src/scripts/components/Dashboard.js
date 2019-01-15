@@ -6,8 +6,10 @@ export default class Dashboard extends Component {
 	constructor(props) {
 		super(props);
 
+		/* Add class to body */
 		document.body.className += ' ' + 'dashboard';
 
+		/* Labels default */
 		this.labels = ['waiting-merge', 'waiting-adjust', 'review-required']
 
 		/* Create state obj */

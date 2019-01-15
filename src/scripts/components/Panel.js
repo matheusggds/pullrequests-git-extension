@@ -24,52 +24,71 @@ export default class Panel extends Component {
 
 		let repo = gh.getRepo('jussilabs', this.props.repo);
 
+		/* Ajax to get current store Pull Requests */
 		repo.listPullRequests().then(res => {
 
 			/* Loop PR's */
 			res.data.map((el) => {
 				let currentLabel = el.labels[0].name.replace(' ', '-'); /* Get label name */
 
-
+				/* Update state incrementing currentLabel attribute */
 				this.setState({
 					[currentLabel] : this.state[currentLabel] ? this.state[currentLabel] + 1 : 1
 				});
 			});
 
-			this.setState({
-				loaded: true
-			})
+			setTimeout(() => {
+				/* Updating state to re-render component */
+				this.setState({
+					loaded: true
+				})
+			}, 2000);
 
+			/* Updating parent State with current labels at this components */
 			this.props.labels.map(el => {
 				this.props.handlerState([el], (this.props.parentState[el] ? this.props.parentState[el] : 0) + this.state[el])
 			})
 		})
 	}
 
-	render() {
+	renderContent() {
 		if (!this.state.loaded) {
-			return <span>Loading</span>
+			return (
+				<ul className="repo-panel__status-list">
+					<li className="repo-panel__status-loading">
+						loading
+					</li>
+				</ul>
+			)
 		} else {
 			return (
-				<div className={"repo-panel repo-panel--" + this.props.shortname}>
-					<div className="repo-panel__header">
-						{this.props.name}
-					</div>
-					<div className="repo-panel__status">
-						<ul className="repo-panel__status-list">
-							<li className="repo-panel__status-item repo-panel__status-item--reviewaquired">
-								{this.state['review-required'] ? this.state['review-required'] : '-'}
-							</li>
-							<li className="repo-panel__status-item repo-panel__status-item--waitingadjust">
-								{this.state['waiting-adjust'] ? this.state['waiting-adjust'] : '-'}
-							</li>
-							<li className="repo-panel__status-item repo-panel__status-item--approved">
-								{this.state['waiting-merge'] ? this.state['waiting-merge'] : '-'}
-							</li>
-						</ul>
-					</div>
-				</div>
+				<ul className="repo-panel__status-list">
+					<li className="repo-panel__status-item repo-panel__status-item--reviewaquired">
+						{this.state['review-required'] ? this.state['review-required'] : '-'}
+					</li>
+					<li className="repo-panel__status-item repo-panel__status-item--waitingadjust">
+						{this.state['waiting-adjust'] ? this.state['waiting-adjust'] : '-'}
+					</li>
+					<li className="repo-panel__status-item repo-panel__status-item--approved">
+						{this.state['waiting-merge'] ? this.state['waiting-merge'] : '-'}
+					</li>
+				</ul>
 			)
 		}
+	}
+
+	render() {
+
+		return (
+			<div className={"repo-panel repo-panel--" + this.props.shortname}>
+				<div className="repo-panel__header">
+					{this.props.name}
+				</div>
+				<div className="repo-panel__status">
+					{this.renderContent()}
+				</div>
+			</div>
+		)
+
 	}
 }

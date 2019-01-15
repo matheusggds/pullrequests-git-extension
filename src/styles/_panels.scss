@@ -16,6 +16,12 @@
 		width: 100%;
 	}
 
+	&__status-loading {
+		padding: 1rem 0;
+		text-align: center;
+		width: 100%;
+	}
+
 	&__status-item {
 		border-right: solid 1px $gray-400;
 		flex: 1;
@@ -70,64 +76,3 @@
 		}
 	}
 }
-
-/* .repo-panel {
-	margin-bottom: 1em;
-	border-width: 1px;
-	border-style: solid;
-
-	&--btp { border-color: $brastemp-color}
-	&--cns { border-color: $consul-color}
-	&--dnl { border-color: $diretonaloja-color}
-	&--cc { border-color: $compracerta-color}
-
-	&__title {
-		background: $white;
-		font-size: .8rem;
-		padding: .4rem .4rem;
-	}
-
-	&__body {
-		background: $white;
-	}
-
-	&__item {
-		align-items: center;
-		border-bottom: solid 1px $gray-200;
-		display: flex;
-		flex-direction: row;
-		font-size: .7rem;
-		padding: .35rem .4rem;
-		position: relative;
-
-		&:last-child {
-			border: none;
-		}
-	}
-
-	&__thumbavatar {
-		img {
-			border-radius: 100%;
-			margin-right: .5rem;
-			width: 25px;
-		}
-	}
-
-	&__label {
-		height: 100%;
-		margin-left: auto;
-		position: absolute;
-		right: 0;
-		top: 0;
-		width: 5px;
-
-		&--review-required { background-color: $review-aquired;}
-		&--waiting-merge { background-color: $review-aquired;}
-		&--waiting-adjust { background-color: $review-aquired;}
-		&--approved { background-color: $review-aquired;}
-	}
-}
-
-.panel {
-}
- */
