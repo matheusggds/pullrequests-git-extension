@@ -87,14 +87,7 @@ gulp.task('scripts', () => {
 					VERSION: JSON.stringify(pkg.version)
 				}),
 
-				new webpack.webpack.BannerPlugin('Build Version: ' + pkg.version),
-
-				new webpack.webpack.optimize.UglifyJsPlugin({
-					minimize: true,
-					compress: {
-						warnings: false
-					}
-				})
+				new webpack.webpack.BannerPlugin('Build Version: ' + pkg.version)
 			]
 		}))
 		.pipe(gulp.dest('build/scripts/'))
