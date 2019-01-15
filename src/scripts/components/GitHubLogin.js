@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import GitHub from 'github-api';
 import { GoMarkGithub } from "react-icons/go";
+import { MdRefresh } from "react-icons/md";
 
 export default class GitHubLogin extends Component {
 	constructor(props) {
 		super(props);
+
+		this.state = {
+			loading: false,
+			error: false
+		}
 
 		this.loginAuthenticate 	= this.loginAuthenticate.bind(this);
 		this.handleInput		= this.handleInput.bind(this);
@@ -16,6 +22,10 @@ export default class GitHubLogin extends Component {
 				username: this.state.login_username,
 				password: this.state.login_password
 			};
+
+		this.setState({
+			loading: true
+		})
 
 		e.preventDefault();
 
@@ -38,6 +48,11 @@ export default class GitHubLogin extends Component {
 				'user':  profileInfos,
 				'isLogged': true
 			}));
+		}, res => {
+			this.setState({
+				loading: false,
+				error: true
+			})
 		});
 	}
 
@@ -55,6 +70,15 @@ export default class GitHubLogin extends Component {
 						<h1 className="login__title h3"> <GoMarkGithub/> <span>Login GitHub</span></h1>
 					</div>
 					<hr/>
+					{
+						this.state.error
+						? (
+							<div className="login__error text-center">
+								Dados incorretos
+							</div>
+						)
+						: ''
+					}
 					<div className="row justify-content-center">
 						<div className="col-6">
 							<form className="form-login" onSubmit={this.loginAuthenticate}>
@@ -81,7 +105,18 @@ export default class GitHubLogin extends Component {
 										autoComplete="new-password"
 									/>
 								</div>
-								<button type="submit" className="btn btn-primary float-right">Autenticar</button>
+								<button type="submit" className="btn btn-primary float-right">
+									Autenticar
+								</button>
+								{
+									this.state.loading
+									? (
+										<span className="login__loader float-right">
+											<MdRefresh/>
+										</span>
+									)
+									: ''
+								}
 							</form>
 						</div>
 					</div>

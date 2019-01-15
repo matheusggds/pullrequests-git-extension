@@ -5,6 +5,12 @@
 	&__header {
 		color: $white;
 		padding: .8rem 1rem;
+		display: block;
+
+		&:hover {
+			color: $white;
+			text-decoration: none;
+		}
 	}
 
 	&__status-list {

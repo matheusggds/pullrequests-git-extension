@@ -26,6 +26,8 @@ export default class Dashboard extends Component {
 
 		this.handlerState 	= this.handlerState.bind(this);
 		this.toggleUpdate 	= this.toggleUpdate.bind(this);
+		this.logout 	= this.logout.bind(this);
+
 	}
 
 	handlerState (key, value) {
@@ -40,6 +42,32 @@ export default class Dashboard extends Component {
 		})
 	}
 
+	logout (e) {
+		e.preventDefault();
+
+		if (localStorage.getItem('pr-extension')) {
+			this.props.handler('isLogged', false);
+			this.props.handler('user', null);
+			this.props.handler('gh', null);
+
+			localStorage.removeItem('pr-extension')
+
+			chrome.runtime.sendMessage(JSON.stringify({
+				text: '',
+				color: 'red'
+			}))
+		}
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		chrome.runtime.sendMessage(JSON.stringify({
+			text: String(nextState['review-required']),
+			color: 'red'
+		}))
+
+		return true;
+	}
+
 	render() {
 		return (
 			<div className="dashboard">
@@ -49,9 +77,6 @@ export default class Dashboard extends Component {
 					</span>
 					<span className="dashboard__welcome-msg">
 						Bem vindo, {this.props.user.name}
-					</span>
-					<span className="dashboard__last-update -js-update" onClick={this.toggleUpdate}>
-						14/01 14:48 <IconContext.Provider value={{ size: '1.5em' }}><MdRefresh /></IconContext.Provider>
 					</span>
 				</header>
 				<ul className="label-description">
@@ -122,6 +147,9 @@ export default class Dashboard extends Component {
 						</div>
 					</div>
 				</section>
+				<footer className="dashboard__footer">
+					<p>Jussi 2019 - <a href="#" onClick={this.logout}>Sair</a></p>
+				</footer>
 			</div>
 		)
 	}

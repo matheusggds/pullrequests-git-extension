@@ -42,6 +42,36 @@ $approved:				#0e8a16;
 			vertical-align: middle;
 		}
 	}
+
+	&__loader {
+		font-size: 1.5em;
+		margin-right: 10px;
+
+		svg {
+			animation-duration: 800ms;
+			animation-iteration-count: infinite;
+			animation-name: spin;
+			animation-timing-function: linear;
+		}
+	}
+
+	&__error {
+		color: $red;
+		text-align: center;
+	}
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
 }
 
 

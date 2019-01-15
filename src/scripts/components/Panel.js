@@ -78,10 +78,10 @@ export default class Panel extends Component {
 	render() {
 
 		return (
-			<div className={"repo-panel repo-panel--" + this.props.shortname}>
-				<div className="repo-panel__header">
+			<div className={`repo-panel repo-panel--${this.props.shortname}`}>
+				<a href={`https://github.com/jussilabs/${this.props.repo}/pulls`} target="blank" className="repo-panel__header">
 					{this.props.name}
-				</div>
+				</a>
 				<div className="repo-panel__status">
 					{this.renderContent()}
 				</div>
