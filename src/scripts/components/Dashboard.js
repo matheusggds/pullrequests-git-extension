@@ -82,7 +82,7 @@ export default class Dashboard extends Component {
 				<ul className="label-description">
 					<li className="label-description__item">
 						<span className="label-description__color label-description__color--reviewaquired"></span>
-						<span className="label-description__desc">Review Aquired</span>
+						<span className="label-description__desc">Review Required</span>
 					</li>
 					<li className="label-description__item">
 						<span className="label-description__color label-description__color--waitingadjust"></span>
