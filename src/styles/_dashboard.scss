@@ -12,7 +12,7 @@
 .label-description {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: flex-start;
 	list-style: none;
 	padding: 0;
 
@@ -20,6 +20,7 @@
 		align-items: center;
 		display: flex;
 		flex-direction: row;
+		margin-right: 1rem;
 	}
 
 	&__color {
