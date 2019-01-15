@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import GitHub from 'github-api';
 import Panel from './Panel';
+import { IconContext } from 'react-icons';
+import { MdRefresh } from 'react-icons/md';
 
 export default class Dashboard extends Component {
 	constructor(props) {
@@ -40,7 +42,7 @@ export default class Dashboard extends Component {
 						Bem vindo, {this.props.user.name}
 					</span>
 					<span className="dashboard__last-update -js-update">
-						14/01 14:48 <i className="fas fa-bullseye"></i>
+						14/01 14:48 <IconContext.Provider value={{ size: '1.5em' }}><MdRefresh /></IconContext.Provider>
 					</span>
 				</header>
 				<ul className="label-description">

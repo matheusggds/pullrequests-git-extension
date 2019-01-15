@@ -88,5 +88,12 @@ body {
 	&__last-update {
 		font-size: .8rem;
 		margin-left: auto;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		svg {
+			margin-left: .5em;
+		}
 	}
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GitHub from 'github-api';
+import { GoMarkGithub } from "react-icons/go";
 
 export default class GitHubLogin extends Component {
 	constructor(props) {
@@ -50,7 +51,9 @@ export default class GitHubLogin extends Component {
 		return (
 			<div className="login">
 				<div className="container">
-					<h1 className="login__title"><i className="fab fa-github"></i> Login GitHub</h1>
+					<div className="login__header">
+						<h1 className="login__title h3"> <GoMarkGithub/> <span>Login GitHub</span></h1>
+					</div>
 					<hr/>
 					<div className="row justify-content-center">
 						<div className="col-6">

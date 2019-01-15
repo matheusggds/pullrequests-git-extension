@@ -33,5 +33,17 @@ $approved:				#0e8a16;
 	min-width: 500px;
 }
 
+.login {
+	&__title {
+		text-align: center;
+
+		svg, span {
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+}
+
+
 @import './_dashboard';
 @import './_panels';
