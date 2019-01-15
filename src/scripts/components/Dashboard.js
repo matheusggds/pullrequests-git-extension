@@ -15,20 +15,29 @@ export default class Dashboard extends Component {
 		this.labels = ['waiting-merge', 'waiting-adjust', 'review-required']
 
 		/* Create state obj */
-		this.state = {}
+		this.state = {
+			toggleUpdate: 0
+		}
 
 		/* Set default state labels to 0 before Ajax to update */
 		this.labels.map(el => {
 			this.state[el] = 0
 		})
 
-		this.handlerState = this.handlerState.bind(this);
+		this.handlerState 	= this.handlerState.bind(this);
+		this.toggleUpdate 	= this.toggleUpdate.bind(this);
 	}
 
 	handlerState (key, value) {
 		this.setState({
 			[key]: value
 		});
+	}
+
+	toggleUpdate (e) {
+		this.setState({
+			toggleUpdate: !this.state.toggleUpdate
+		})
 	}
 
 	render() {
@@ -41,7 +50,7 @@ export default class Dashboard extends Component {
 					<span className="dashboard__welcome-msg">
 						Bem vindo, {this.props.user.name}
 					</span>
-					<span className="dashboard__last-update -js-update">
+					<span className="dashboard__last-update -js-update" onClick={this.toggleUpdate}>
 						14/01 14:48 <IconContext.Provider value={{ size: '1.5em' }}><MdRefresh /></IconContext.Provider>
 					</span>
 				</header>
@@ -70,6 +79,7 @@ export default class Dashboard extends Component {
 								parentState={this.state}
 								labels={this.labels}
 								handlerState={this.handlerState}
+								update={this.state.toggleUpdate}
 							/>
 						</div>
 						<div className="col-6">
@@ -81,6 +91,7 @@ export default class Dashboard extends Component {
 								parentState={this.state}
 								labels={this.labels}
 								handlerState={this.handlerState}
+								update={this.state.toggleUpdate}
 							/>
 						</div>
 					</div>
@@ -94,6 +105,7 @@ export default class Dashboard extends Component {
 								parentState={this.state}
 								labels={this.labels}
 								handlerState={this.handlerState}
+								update={this.state.toggleUpdate}
 							/>
 						</div>
 						<div className="col-6">
@@ -105,6 +117,7 @@ export default class Dashboard extends Component {
 								parentState={this.state}
 								labels={this.labels}
 								handlerState={this.handlerState}
+								update={this.state.toggleUpdate}
 							/>
 						</div>
 					</div>

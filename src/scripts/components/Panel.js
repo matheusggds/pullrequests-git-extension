@@ -37,12 +37,10 @@ export default class Panel extends Component {
 				});
 			});
 
-			setTimeout(() => {
-				/* Updating state to re-render component */
-				this.setState({
-					loaded: true
-				})
-			}, 2000);
+			/* Updating state to re-render component */
+			this.setState({
+				loaded: true
+			})
 
 			/* Updating parent State with current labels at this components */
 			this.props.labels.map(el => {
@@ -56,7 +54,7 @@ export default class Panel extends Component {
 			return (
 				<ul className="repo-panel__status-list">
 					<li className="repo-panel__status-loading">
-						loading
+						loading...
 					</li>
 				</ul>
 			)
