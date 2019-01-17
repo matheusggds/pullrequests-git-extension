@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import GitHub from 'github-api';
 import Panel from './Panel';
-import { IconContext } from 'react-icons';
-import { MdRefresh } from 'react-icons/md';
 
 export default class Dashboard extends Component {
 
