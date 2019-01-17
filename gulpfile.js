@@ -61,6 +61,8 @@ gulp.task('scripts', () => {
 		.pipe($.plumber())
 		.pipe(named())
 		.pipe(webpack({
+			mode: 'development',
+
 			output: {
 				filename: '[name].min.js'
 			},
@@ -70,13 +72,16 @@ gulp.task('scripts', () => {
 			},
 
 			module: {
-				loaders: [
+				rules: [
 					{
 						test: /\.js$/,
-						loader: 'babel-loader',
 						exclude: /node_modules/,
-						query: {
-							presets: ['es2015', 'react']
+						use: {
+							loader: 'babel-loader?cacheDirectory',
+							options: {
+								presets: ['@babel/preset-env', '@babel/preset-react'],
+								plugins: ['@babel/plugin-proposal-class-properties']
+							}
 						}
 					}
 				]

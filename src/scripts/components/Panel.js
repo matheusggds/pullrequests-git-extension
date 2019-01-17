@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import GitHub from 'github-api';
 
 export default class Panel extends Component {
+
+	/* Default state */
+	state = {
+		loaded: false,
+	}
+
 	constructor(props) {
 		super(props);
-
-		/* Default state */
-		this.state = {
-			loaded: false,
-		}
 
 		/* Set default state labels to 0 before Ajax to update */
 		this.props.labels.map(el => {

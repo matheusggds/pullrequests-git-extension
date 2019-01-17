@@ -5,44 +5,54 @@ import { IconContext } from 'react-icons';
 import { MdRefresh } from 'react-icons/md';
 
 export default class Dashboard extends Component {
+
+	state = {
+		toggleUpdate: 0
+	}
+
+	labels = ['waiting-merge', 'waiting-adjust', 'review-required']
+
 	constructor(props) {
 		super(props);
-
-		/* Add class to body */
-		document.body.className += ' ' + 'dashboard';
-
-		/* Labels default */
-		this.labels = ['waiting-merge', 'waiting-adjust', 'review-required']
-
-		/* Create state obj */
-		this.state = {
-			toggleUpdate: 0
-		}
 
 		/* Set default state labels to 0 before Ajax to update */
 		this.labels.map(el => {
 			this.state[el] = 0
 		})
-
-		this.handlerState 	= this.handlerState.bind(this);
-		this.toggleUpdate 	= this.toggleUpdate.bind(this);
-		this.logout 	= this.logout.bind(this);
-
 	}
 
-	handlerState (key, value) {
+	shouldComponentUpdate(nextProps, nextState) {
+		chrome.runtime.sendMessage(JSON.stringify({
+			text: String(nextState['review-required']),
+			color: 'red'
+		}))
+
+		return true;
+	}
+
+	componentDidMount() {
+		/* Add class to body */
+		document.body.classList.add('dashboard');
+	}
+
+	componentWillUnmount() {
+		/* Remove class to body */
+		document.body.classList.remove('dashboard');
+	}
+
+	handlerState = (key, value) => {
 		this.setState({
 			[key]: value
 		});
 	}
 
-	toggleUpdate (e) {
+	toggleUpdate = (e) => {
 		this.setState({
 			toggleUpdate: !this.state.toggleUpdate
 		})
 	}
 
-	logout (e) {
+	logout = (e) => {
 		e.preventDefault();
 
 		if (localStorage.getItem('pr-extension')) {
@@ -57,15 +67,6 @@ export default class Dashboard extends Component {
 				color: 'red'
 			}))
 		}
-	}
-
-	shouldComponentUpdate(nextProps, nextState) {
-		chrome.runtime.sendMessage(JSON.stringify({
-			text: String(nextState['review-required']),
-			color: 'red'
-		}))
-
-		return true;
 	}
 
 	render() {
