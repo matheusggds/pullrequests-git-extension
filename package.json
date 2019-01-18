@@ -4,6 +4,8 @@
 	"description": "Extension to easily view Jussi Plataformas Pull Requestes Labels",
 	"main": "index.js",
 	"scripts": {
+		"start": "gulp",
+		"build": "NODE_ENV=production gulp",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": "git+https://github.com/matheusggds/pullrequests-git-extension.git",
@@ -43,7 +45,7 @@
 		"gulp-rename": "^1.2.2",
 		"gulp-sass": "^4.0.2",
 		"gulp-sourcemaps": "^2.6.1",
-		"gulp-webserver": "^0.9.1",
+		"gulp-util": "^3.0.8",
 		"vinyl-named": "^1.1.0",
 		"webpack-stream": "^5.2.1"
 	},

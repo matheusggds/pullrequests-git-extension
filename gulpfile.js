@@ -6,14 +6,13 @@ const gulp 			= require('gulp'),
 	cssMqpacker 	= require('css-mqpacker'),
 	autoprefixer 	= require('autoprefixer'),
 	named 			= require('vinyl-named'),
-	connect 		= require('gulp-connect-php'),
 	browserSync 	= require('browser-sync'),
-	webpack 		= require('webpack-stream');
+	webpack 		= require('webpack-stream'),
+	isProductionEnv = process.env.NODE_ENV && process.env.NODE_ENV === 'production';
 
 const paths = {
 	js: 'src/scripts/**/*.js',
 	scss: 'src/styles/**/*.scss',
-	css: 'src/css/*.css',
 	webpack: 'src/scripts/*.js'
 };
 
@@ -31,10 +30,11 @@ gulp.task('styles', () => {
 		.pipe($.plumber())
 		.pipe($.sass({
 			errLogToConsole: true,
-			outputStyle: 'compressed',
+			outputStyle: isProductionEnv ? 'compressed' : 'nested',
 			includePaths: ['src/styles', 'node_modules/']
 		}).on('error', $.sass.logError))
-		.pipe($.postcss([
+		.pipe(isProductionEnv ? $.postcss([
+			autoprefixer(),
 			cssMqpacker({
 				sort: true
 			}),
@@ -42,16 +42,11 @@ gulp.task('styles', () => {
 				autoprefixer: false,
 				reduceIdents: false
 			})
-		]))
-		.pipe($.postcss([
-			autoprefixer()
-		]))
+		]) : $.util.noop())
 		.pipe(banner(comment, {
 			pkg: pkg
 		}))
-		.pipe($.sourcemaps.write('.'))
-		.pipe(gulp.dest('./build/css/'))
-		.pipe($.rename(file => file.basename = file.basename.replace('.min', '')))
+		.pipe(isProductionEnv ? $.util.noop() : $.sourcemaps.write('.'))
 		.pipe(gulp.dest('./build/css/'))
 		.pipe(browserSync.stream());
 });
@@ -61,7 +56,7 @@ gulp.task('scripts', () => {
 		.pipe($.plumber())
 		.pipe(named())
 		.pipe(webpack({
-			mode: 'development',
+			mode: isProductionEnv ? 'production' : 'development',
 
 			output: {
 				filename: '[name].min.js'
@@ -87,13 +82,11 @@ gulp.task('scripts', () => {
 				]
 			},
 
-			plugins: [
-				new webpack.webpack.DefinePlugin({
-					VERSION: JSON.stringify(pkg.version)
-				}),
+			devtool: isProductionEnv ? '' : 'source-map',
 
-				new webpack.webpack.BannerPlugin('Build Version: ' + pkg.version)
-			]
+			optimization: {
+				minimize: !!isProductionEnv
+			}
 		}))
 		.pipe(gulp.dest('build/scripts/'))
 		.pipe(browserSync.stream());
@@ -105,6 +98,7 @@ gulp.task('connect-sync', () => {
         server: { baseDir: './build/' }
     })
 });
+
 // Default task
 gulp.task('default', ['styles', 'scripts', 'connect-sync', 'watch']);
 
