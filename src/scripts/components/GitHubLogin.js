@@ -4,30 +4,27 @@ import { GoMarkGithub } from "react-icons/go";
 import { MdRefresh } from "react-icons/md";
 
 export default class GitHubLogin extends Component {
-	constructor(props) {
-		super(props);
 
-		this.state = {
-			loading: false,
-			error: false
-		}
-
-		this.loginAuthenticate 	= this.loginAuthenticate.bind(this);
-		this.handleInput		= this.handleInput.bind(this);
+	state = {
+		loading: false,
+		error: false
 	}
 
-	loginAuthenticate(e) {
-		const self = this,
-			loginInfo = {
-				username: this.state.login_username,
-				password: this.state.login_password
+	loginAuthenticate = (e) => {
+
+		e.preventDefault();
+
+		const { login_username: username, login_password: password } = this.state;
+		const { handler } = this.props;
+
+		const loginInfo = {
+				username,
+				password
 			};
 
 		this.setState({
 			loading: true
 		})
-
-		e.preventDefault();
 
 		/* Authenticate User */
 		var gh = new GitHub(loginInfo);
@@ -38,9 +35,9 @@ export default class GitHubLogin extends Component {
 				'image': res.data.avatar_url
 			};
 
-			this.props.handler('user', profileInfos);
-			this.props.handler('gh', loginInfo);
-			this.props.handler('isLogged', true)
+			handler('user', profileInfos);
+			handler('gh', loginInfo);
+			handler('isLogged', true)
 
 			/* Save authentication locally */
 			localStorage.setItem('pr-extension', JSON.stringify({
@@ -48,7 +45,7 @@ export default class GitHubLogin extends Component {
 				'user':  profileInfos,
 				'isLogged': true
 			}));
-		}, res => {
+		}, () => {
 			this.setState({
 				loading: false,
 				error: true
@@ -56,7 +53,7 @@ export default class GitHubLogin extends Component {
 		});
 	}
 
-	handleInput(e) {
+	handleInput = (e) => {
 		this.setState({
 			[e.target.name]: e.target.value
 		})
